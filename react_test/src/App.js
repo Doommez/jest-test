@@ -6,6 +6,8 @@ import MainPage from "./pages/MainPage";
 import AboutPage from "./pages/AboutPage";
 import ErrorPage from "./pages/ErrorPage";
 import UsersDetailsPage from "./pages/UsersDetailsPage";
+import React from "react";
+import AppRouter from "./router/AppRouter";
 
 // function App() {
 //   const [data, setData] = useState(null);
@@ -61,13 +63,7 @@ function App() {
       <Link to={"/users"} data-testid="users-link">
         Users
       </Link>
-      <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/users" element={<Users />} />
-        <Route path="/users/:id" element={<UsersDetailsPage />} />
-        <Route path="/*" element={<ErrorPage />} />
-      </Routes>
+      <AppRouter />
     </div>
   );
 }

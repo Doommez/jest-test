@@ -1,10 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import Users from "./Users";
 import axios from "axios";
 import { MemoryRouter } from "react-router-dom";
 import userEvent from "@testing-library/user-event";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import UsersDetailsPage from "../pages/UsersDetailsPage";
+import Users from "./Users";
+import UsersDetailsPage from "src/pages/UsersDetailsPage";
+import AppRouter from "src/router/AppRouter";
 
 jest.mock("axios");
 
@@ -32,6 +33,7 @@ describe("Users", () => {
     jest.clearAllMocks();
   });
   test("Item", async () => {
+    // @ts-ignore
     axios.get.mockReturnValue(res);
     render(
       <MemoryRouter>
@@ -46,18 +48,15 @@ describe("Users", () => {
   });
 
   test("Redirect", async () => {
+    // @ts-ignore
     axios.get.mockReturnValue(res);
     render(
       <MemoryRouter initialEntries={["/users"]}>
-        <Routes>
-          <Route path="/users" element={<Users />} />
-          <Route path="/users/:id" element={<UsersDetailsPage />} />
-        </Routes>
+        <AppRouter />
       </MemoryRouter>
     );
 
     const users = await screen.findAllByTestId("user-item");
-
     expect(users.length).toBe(3);
     expect(axios.get).toHaveBeenCalledTimes(1);
     userEvent.click(users[0]);
