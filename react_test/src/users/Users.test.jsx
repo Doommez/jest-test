@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Users from "./Users";
 import UsersDetailsPage from "src/pages/UsersDetailsPage";
 import AppRouter from "src/router/AppRouter";
+import { renderWithRouter } from "src/tests/helpers/renderWithRouter";
 
 jest.mock("axios");
 
@@ -50,11 +51,7 @@ describe("Users", () => {
   test("Redirect", async () => {
     // @ts-ignore
     axios.get.mockReturnValue(res);
-    render(
-      <MemoryRouter initialEntries={["/users"]}>
-        <AppRouter />
-      </MemoryRouter>
-    );
+    render(renderWithRouter(null, ["/users"]));
 
     const users = await screen.findAllByTestId("user-item");
     expect(users.length).toBe(3);
