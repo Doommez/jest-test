@@ -8,6 +8,7 @@ import ErrorPage from "./pages/ErrorPage";
 import UsersDetailsPage from "./pages/UsersDetailsPage";
 import React from "react";
 import AppRouter from "./router/AppRouter";
+import NavBar from "./components/navBar/NavBar";
 
 // function App() {
 //   const [data, setData] = useState(null);
@@ -54,15 +55,7 @@ import AppRouter from "./router/AppRouter";
 function App() {
   return (
     <div>
-      <Link to={"/"} data-testid="main-link">
-        Main Page
-      </Link>
-      <Link to={"/about"} data-testid="about-link">
-        About Page
-      </Link>
-      <Link to={"/users"} data-testid="users-link">
-        Users
-      </Link>
+      <NavBar />
       <AppRouter />
     </div>
   );

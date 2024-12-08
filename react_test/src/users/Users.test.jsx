@@ -51,8 +51,7 @@ describe("Users", () => {
   test("Redirect", async () => {
     // @ts-ignore
     axios.get.mockReturnValue(res);
-    render(renderWithRouter(null, ["/users"]));
-
+    renderWithRouter(null, ["/users"]);
     const users = await screen.findAllByTestId("user-item");
     expect(users.length).toBe(3);
     expect(axios.get).toHaveBeenCalledTimes(1);
