@@ -4,10 +4,18 @@ import userEvent from "@testing-library/user-event";
 import {Provider} from "react-redux";
 import { createReduxStore } from "src/store/store";
 import { renderWithStore } from "src/tests/helpers/renderWithStore";
+import { renderTestApp } from "src/tests/helpers/renderTestApp";
 
 describe('Counter', () => {
     test('renders correctly', async () => {
-        const counter = renderWithStore(<Counter />, {counter: {value: 0}});
+        const counter = renderTestApp(<Counter />, {
+            route: '/about',
+        initialState: {
+            counter: {
+                value: 0
+            }
+        }
+    });
         counter.getByTestId('increment')
         const incrementBtn = counter.getByTestId('increment')
         expect(counter.getByTestId('value-title')).toHaveTextContent('0');
