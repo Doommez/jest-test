@@ -5,6 +5,7 @@ import UsersDetailsPage from "../pages/UsersDetailsPage";
 import AboutPage from "../pages/AboutPage";
 import ErrorPage from "src/pages/ErrorPage";
 import Users from "src/users/Users";
+import HelloWorld from "../pages/HelloWorld";
 
 const AppRouter = () => {
   return (
@@ -14,6 +15,7 @@ const AppRouter = () => {
       <Route path="/users" element={<Users />} />
       <Route path="/users/:id" element={<UsersDetailsPage />} />
       <Route path="/*" element={<ErrorPage />} />
+      <Route path={'/hello'} element={<HelloWorld />} />
     </Routes>
   );
 };
