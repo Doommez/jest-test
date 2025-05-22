@@ -12,15 +12,29 @@ const Users = () => {
     setUsers(data);
   };
 
+  const onDelete = async (id)=>{
+    setUsers(users.filter(user => user.id !== id));
+  }
+
   useEffect(() => {
     loadData();
   }, []);
+
+  if (users.length === 0){
+    return <div id={"loading"}>Loading</div>
+  }
+
   return (
     <div data-testid={"users-page"}>
       {users.map((user) => (
-        <Link to={`/users/${user.id}`} key={user.id} data-testid={"user-item"}>
+          <>
+        <Link to={`/users/${user.id}`} key={user.id} id={"user-item"}>
           {user.name}
         </Link>
+        <button id={"user-delete"} className="btn btn-primary" onClick={()=>onDelete(user.id)}>
+           delete
+         </button>
+          </>
       ))}
     </div>
   );

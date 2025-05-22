@@ -9,5 +9,9 @@ describe('load user', () => {
 
     })
 
+    it('users delete', async () => {
+        await UserPage.loadData()
+        await UserPage.deleteUser()
+    })
 })
 
