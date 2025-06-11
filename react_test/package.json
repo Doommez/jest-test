@@ -20,12 +20,15 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "wdio": "wdio run ./wdio.conf.js",
-    "test:e2e": "npx wdio run ./wdio.conf.js"
+    "test:e2e": "npx wdio run ./wdio.conf.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest"
+      "react-app/jest",
+      "plugin:storybook/recommended"
     ]
   },
   "browserslist": {
@@ -41,12 +44,20 @@
     ]
   },
   "devDependencies": {
+    "@storybook/addon-docs": "^9.0.8",
+    "@storybook/addon-onboarding": "^9.0.8",
+    "@storybook/preset-create-react-app": "^9.0.8",
+    "@storybook/react-webpack5": "^9.0.8",
     "@testing-library/react": "^16.0.1",
     "@wdio/cli": "^9.13.0",
     "@wdio/local-runner": "^9.13.0",
     "@wdio/mocha-framework": "^9.13.0",
     "@wdio/spec-reporter": "^9.13.0",
     "@wdio/visual-service": "^8.0.1",
-    "react-test-renderer": "^18.3.1"
+    "eslint-plugin-storybook": "^9.0.8",
+    "prop-types": "^15.8.1",
+    "react-test-renderer": "^18.3.1",
+    "storybook": "^9.0.8",
+    "webpack": "^5.99.9"
   }
 }
